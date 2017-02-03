@@ -1,0 +1,191 @@
+<form class="form-horizontal form-complex">
+
+    <div class="control-group">
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+               The fields below can be used to overwrite the default values entered during setup. These fields are optional.
+            </span>
+        </div>
+
+        <label class="control-label" for="slackalert_url">URL</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.url" id="slackalert_url" />
+        </div>
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                In order to obtain the Webhook URL you have to create a new incoming webhook integration for you Slack instance.
+                See <a target=_blank href="https://api.slack.com/incoming-webhooks">Incoming Webhooks Docs</a> for details.
+                Just enter the base URL in this field, the token should be entered in the next field
+            </span>
+        </div>
+
+        <label class="control-label" for="slackalert_hooktoken">Hooktoken</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.hooktoken" id="slackalert_hooktoken" />
+            <span class="help-block">Hook token for your community</span>
+        </div>
+
+        <label class="control-label" for="slackalert_proxy">Proxy</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.proxy" id="slackalert_proxy" />
+            <span class="help-block">http[s]://[user[:pass]@]proxy[:port]</span>
+        </div>
+        <hr>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="slackalert_alerttype_fld">Alerttype</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.alerttype_fld" id="slackalert_alerttype_fld" required />*
+            <span class="help-block">For these values enter the fieldname from the results</span>
+        </div>
+
+        <label class="control-label" for="slackalert_message_fld">Message</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.message_fld" id="slack_message_fld" required />*
+        </div>
+
+        <label class="control-label" for="slackalert_channel_fld">Channel</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.channel_fld" id="slackalert_channel_fld" />
+        </div>
+        <hr>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                The fields below are used to create the message send to Slack.<BR><BR>
+                Enter the values for these Slack message fields. Either use direct value or a splunk token (i.e. <code style="color:#333">$result.fieldname$</code>)
+                If you use the last case, the field has to be included in the fields list above.
+                For an explanation of these fields, have a look at the <a target=_blank href="https://api.slack.com/docs/message-attachments">Slack API message attachments</a>.
+            </span>
+        </div>
+
+        <label class="control-label" for="slackalert_author_icon">author_icon</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.author_icon" id="slackalert_author_icon" />
+        </div>
+        <label class="control-label" for="slackalert_author_link">author_link</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.author_link" id="slackalert_author_link" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_author_name">author_name</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.author_name" id="slackalert_author_name" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_channel">channel</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.channel" id="slackalert_channel" />
+            <span class="help-block">Can start with # (channel) or @ (person). Defaults to # if omitted.</span>
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_fallback">fallback</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.fallback" id="slackalert_fallback" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_footer">footer</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.footer" id="slackalert_footer" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_footer_icon">footer_icon</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.footer_icon" id="slackalert_footer_icon" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_icon_emoji">icon_emoji</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.icon_emoji" id="slackalert_icon_emoji" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_icon_url">icon_url</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.icon_url" id="slackalert_icon_url" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_image_url">image_url</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.image_url" id="slackalert_image_url" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_pretext">pretext</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.pretext" id="slackalert_pretext" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_text">text</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.text" id="slackalert_text" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_thumb_url">thumb_url</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.thumb_url" id="slackalert_thumb_url" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_title">title</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.title" id="slackalert_title" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_title_link">title_link</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.title_link" id="slackalert_title_link" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_ts">ts</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.ts" id="slackalert_ts" />
+            <span class="help-block"></span>
+        </div>
+        <label class="control-label" for="slackalert_username">username</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.username" id="slackalert_username" />
+            <span class="help-block"></span>
+        </div>
+        <hr>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="slackalert_alerttype_default">default</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.alerttype_default" id="slackalert_alerttype_default" />
+        </div>
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                The default alert color (HTML color name, rgb(r,g,b) format or HEX format)
+            </span>
+        </div>
+        <label class="control-label" for="slackalert_alerttype_list">alertcolors</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.alerttype_list" id="slackalert_alerttype_list" />
+        </div>
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                JSON notation for color per alerttype (HTML color name, rgb(r,g,b) format or HEX format) (i.e. <code style="color:#333">{ "CRIT": "#FF0000", "WARN": "orange" }</code>)
+            </span>
+        </div>
+        <hr>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="slackalert_additional_fields">Fields</label>
+        <div class="controls">
+            <textarea rows=5 name="action.slackalert.param.additional_fields" id="slackalert_additional_fields"></textarea>
+        </div>
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                Add additional fields you want to add in the alert. Use JSON notation to define fields and their values.
+                The value can be a direct string or a Splunk token (i.e. <code style="color:#333">$result.fieldname$</code>).
+                <BR>Example:<BR><code style="color:#333">{ "Field header 1": "Fixed value",<BR>"Field header 2": "$result.fieldname$" }</code>
+                <BR>The value for Field header 2 will be replaced by Splunk.
+            </span>
+        </div>
+    </div>
+
+</form>
+

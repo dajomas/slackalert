@@ -1,0 +1,54 @@
+<setup>
+    <block title="Slack Alert Action">
+        <text>Default configuration for the Slack API. (Can be overriden in slackalert.conf)</text>
+    </block>
+
+    <block title="Proxy" endpoint="admin/alert_actions" entity="slackalert">
+        <input field="param.proxy">
+
+            <label>Proxy string</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          http://proxy_user:proxy_pass@proxy_server:proxy_port<BR>
+          proxy_user, proxy_pass and proxy_port are optional<BR>
+          proxy_user and proxy_pass default to empty<BR>
+          proxy_port defaults to the default port for the protocol (80 for http and 443 for https)
+        ]]></text>
+    </block>
+
+    <block title="Server" endpoint="admin/alert_actions" entity="slackalert">
+        <input field="param.url">
+
+            <label>Webhook URL</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          In order to obtain the Webhook URL you have to create a new incoming webhook integration for you Slack instance.
+          See <a href="https://api.slack.com/incoming-webhooks">Incoming Webhooks Docs</a> for details.
+        ]]></text>
+    </block>
+
+    <block title="Token" endpoint="admin/alert_actions" entity="slackalert">
+        <input field="param.hooktoken">
+
+            <label>Webhook token</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          This is the default token that will be used if no token is defined for a specific alert.
+        ]]></text>
+    </block>
+
+    <block title="Channel" endpoint="admin/alert_actions" entity="slackalert">
+        <input field="param.channel">
+
+            <label>Channel</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          This is the default channel that will be used to send alerts to.
+        ]]></text>
+    </block>
+
+</setup>
