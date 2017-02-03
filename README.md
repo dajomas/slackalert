@@ -19,6 +19,6 @@ The fields that contain this information can be configured in the alert configur
 The third section in the alert configuration contains information that can be used to construct the Slack message.
 (for more information on these fields have a look at https://api.slack.com/docs/message-attachments)
 
-In the forth section the message bar colors are defined based on the alert type
+In the fourth section the message bar colors are defined based on the alert type
 
 The final section defines additional fields to display in the message based on fields in the search results.
