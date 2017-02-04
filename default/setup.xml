@@ -40,15 +40,4 @@
         ]]></text>
     </block>
 
-    <block title="Channel" endpoint="admin/alert_actions" entity="slackalert">
-        <input field="param.channel">
-
-            <label>Channel</label>
-            <type>text</type>
-        </input>
-        <text><![CDATA[
-          This is the default channel that will be used to send alerts to.
-        ]]></text>
-    </block>
-
 </setup>

@@ -5,7 +5,8 @@ Look at https://api.slack.com/incoming-webhooks for details on incoming webhooks
 
 The slackalert add-on is a custom alert to generate Slack messages.
 
-The current version requires you to configure the Trigger setting to "For each result"
+If the Trigger setting is set to Once, all result events are combined into a single Slack message.
+If the Trigger setting is set to For each result, then each result will get its own Slack message.
 
 When you install the add-on, you can run the setup to configure the Slack URL to connect to the webhook, the hook token and a proxy
 

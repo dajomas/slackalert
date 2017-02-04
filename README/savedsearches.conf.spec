@@ -6,7 +6,6 @@ action.slackalert.param.proxy = <string>
 
 action.slackalert.param.alerttype_fld = <string>
 action.slackalert.param.message_fld = <string>
-action.slackalert.param.channel_fld = <string>
 
 action.slackalert.param.icon_emoji = <string>
 action.slackalert.param.icon_url = <string>
