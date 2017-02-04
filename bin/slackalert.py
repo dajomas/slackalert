@@ -1,6 +1,9 @@
 #!/opt/splunk/bin/python
 
 # Author: Johan Godfried (johan@goditt.com)
+# version 1.2.0
+# Changelog
+# + Add support for Trigger setting Once
 # version 0.3
 # Changelog
 # - removed support for conf file
