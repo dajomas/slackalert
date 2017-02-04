@@ -58,7 +58,7 @@ def debug_print(debug_msg, txt_to_print):
 def replace_macro(txtstring, res_data):
     for key in res_data.keys():
         try:
-            txtstring = txtstring.replace('{'+key+'}',res_data[key][0])
+            txtstring = txtstring.replace('{'+key+'}',res_data[key])
         except:
             pass
             
