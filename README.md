@@ -14,7 +14,6 @@ When you install the add-on, you can run the setup to configure the Slack URL to
 When you configure an alert, the add-on requires the search result to contain at least the following information:
  * an alert type
  * a messages
- * channel (optional)
  
 The fields that contain this information can be configured in the alert configuration
 
