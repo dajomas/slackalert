@@ -89,22 +89,22 @@
 
     <div class="control-group">
         <hr><H3>Alert color settings</H3><hr>
-        <label class="control-label" for="slackalert_alerttype_default">default</label>
+        <label class="control-label" for="slackalert_severity_default">default</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.alerttype_default" id="slackalert_alerttype_default" />
+            <input type="text" name="action.slackalert.param.severity_default" id="slackalert_severity_default" />
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
                 The default alert color (HTML color name, rgb(r,g,b) format or HEX format)
             </span>
         </div>
-        <label class="control-label" for="slackalert_alerttype_list">alertcolors</label>
+        <label class="control-label" for="slackalert_severity_list">severity colors</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.alerttype_list" id="slackalert_alerttype_list" />
+            <input type="text" name="action.slackalert.param.severity_list" id="slackalert_severity_list" />
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
-                JSON notation for color per alerttype (HTML color name, rgb(r,g,b) format or HEX format) (i.e. <code style="color:#333">{ "CRIT": "#FF0000", "WARN": "orange" }</code>)
+                JSON notation for color per severity (HTML color name, rgb(r,g,b) format or HEX format) For example: <code style="color:#333">{ "CRIT": "#FF0000", "WARN": "orange" }</code>
             </span>
         </div>
     </div>
@@ -221,4 +221,3 @@
     </div>
 
 </form>
-

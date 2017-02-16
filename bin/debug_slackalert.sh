@@ -11,6 +11,7 @@ echo "******************************" >> ${OUTFILE}
 echo "* $(date)" >> ${OUTFILE}
 echo "******************************" >> ${OUTFILE}
 echo "$@" >> ${OUTFILE}
+ehco "$(which python)" >> ${OUTFILE}
 echo "******************************" >> ${OUTFILE}
 python $(dirname $0)/action_$(basename $0 .sh).py "$@" --debug >> ${OUTFILE} 2>&1
 echo "******************************" >> ${OUTFILE}

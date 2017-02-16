@@ -1,9 +1,9 @@
 <setup>
     <block title="Slack Alert Action">
-        <text>Default configuration for the Slack API. (Can be overriden in slackalert.conf)</text>
+        <text>Default configuration for the Slack API. (Can be overriden when the alert is configured)</text>
     </block>
 
-    <block title="Proxy" endpoint="admin/alert_actions" entity="slackalert">
+    <block title="Slack connection settings" endpoint="admin/alert_actions" entity="slackalert">
         <input field="param.proxy">
 
             <label>Proxy string</label>
@@ -15,9 +15,6 @@
           proxy_user and proxy_pass default to empty<BR>
           proxy_port defaults to the default port for the protocol (80 for http and 443 for https)
         ]]></text>
-    </block>
-
-    <block title="Server" endpoint="admin/alert_actions" entity="slackalert">
         <input field="param.url">
 
             <label>Webhook URL</label>
@@ -27,9 +24,6 @@
           In order to obtain the Webhook URL you have to create a new incoming webhook integration for you Slack instance.
           See <a href="https://api.slack.com/incoming-webhooks">Incoming Webhooks Docs</a> for details.
         ]]></text>
-    </block>
-
-    <block title="Token" endpoint="admin/alert_actions" entity="slackalert">
         <input field="param.hooktoken">
 
             <label>Webhook token</label>
@@ -40,4 +34,63 @@
         ]]></text>
     </block>
 
+    <block title="Mandatory settings" endpoint="admin/alert_actions" entity="slackalert">
+        <input field="param.severity">
+
+            <label>Severity Field</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          Enter the default fieldname from the search results that contains the alert type. Defaults to field name severity.
+        ]]></text>
+        <input field="param.message_fld">
+
+            <label>Message Field</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          Enter the default fieldname from the search results that contains the message. Defaults to field name message.
+        ]]></text>
+        <input field="param.message">
+
+            <label>Message</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          Enter the default message. If both Message Field and Message are entered, the Message Field is used. If the Message Fiedl does not exist in the search, the Message is used.
+        ]]></text>
+    </block>
+
+    <block title="Optional settings" endpoint="admin/alert_actions" entity="slackalert">
+        <input field="param.severity_default">
+
+            <label>Default message color</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          The default alert color (HTML color name, rgb(r,g,b) format or HEX format)
+        ]]></text>
+    </block>
+
+    <block title="Alert color settings" endpoint="admin/alert_actions" entity="slackalert">
+        <input field="param.severity_list">
+
+            <label>Severity colors</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          JSON notation for color per severity (HTML color name, rgb(r,g,b) format or HEX fwrmat) For example: { "CRIT": "#FF0000", "WARN": "orange" }
+        ]]></text>
+        <input field="param.message_fld">
+
+            <label>Message Field</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          Enter the default fieldname from the search results that contains the message. Defaults to field name message.
+        ]]></text>
+    </block>
+
+    <block title="Additional fields" endpoint="admin/alert_actions" entity="slackalert">
+    </block>
 </setup>
