@@ -1,6 +1,7 @@
 <form class="form-horizontal form-complex">
 
     <div class="control-group">
+        <hr><h3>Slack connection settings</h3><hr>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
                The fields below can be used to overwrite the default values entered during setup. These fields are optional.
@@ -30,10 +31,10 @@
             <input type="text" name="action.slackalert.param.proxy" id="slackalert_proxy" />
             <span class="help-block">http[s]://[user[:pass]@]proxy[:port]</span>
         </div>
-        <hr>
     </div>
 
     <div class="control-group">
+        <hr><h3>Mandatory fields settings</h3><hr>
         <label class="control-label" for="slackalert_alerttype_fld">Alerttype</label>
         <div class="controls">
             <input type="text" name="action.slackalert.param.alerttype_fld" id="slackalert_alerttype_fld" required />*
@@ -44,16 +45,15 @@
         <div class="controls">
             <input type="text" name="action.slackalert.param.message_fld" id="slack_message_fld" required />*
         </div>
-        <hr>
     </div>
 
     <div class="control-group">
+        <hr><h3>Slack message format settings</h3><hr>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
-                The fields below are used to create the message send to Slack.<BR><BR>
+                The fields below are used to create the message sent to Slack.<BR><BR>
                 Enter the values for these Slack message fields. Either use direct value, a splunk token (i.e. <code style="color:#333">$result.fieldname$</code>)
                 or a field macro (i.e. <code style="color:#333">{fieldname}</code>)
-                If you use the last case, the field has to be included in the fields list above.
                 For an explanation of these fields, have a look at the <a target=_blank href="https://api.slack.com/docs/message-attachments">Slack API message attachments</a>.
             </span>
         </div>
@@ -143,10 +143,10 @@
             <input type="text" name="action.slackalert.param.username" id="slackalert_username" />
             <span class="help-block"></span>
         </div>
-        <hr>
     </div>
 
     <div class="control-group">
+        <hr><h3>Alert color settings</h3><hr>
         <label class="control-label" for="slackalert_alerttype_default">default</label>
         <div class="controls">
             <input type="text" name="action.slackalert.param.alerttype_default" id="slackalert_alerttype_default" />
@@ -165,10 +165,10 @@
                 JSON notation for color per alerttype (HTML color name, rgb(r,g,b) format or HEX format) (i.e. <code style="color:#333">{ "CRIT": "#FF0000", "WARN": "orange" }</code>)
             </span>
         </div>
-        <hr>
     </div>
 
     <div class="control-group">
+        <hr><h3>Additional fields settings</h3><hr>
         <label class="control-label" for="slackalert_additional_fields">Fields</label>
         <div class="controls">
             <textarea rows=5 name="action.slackalert.param.additional_fields" id="slackalert_additional_fields"></textarea>
