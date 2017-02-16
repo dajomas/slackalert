@@ -10,6 +10,11 @@ action.slackalert.param.message = <string>
 
 action.slackalert.param.channel = <string>
 
+action.slackalert.param.severity_default = <string>
+action.slackalert.param.severity_list = <string>
+
+action.slackalert.param.additional_fields = <string>
+
 action.slackalert.param.icon_emoji = <string>
 action.slackalert.param.icon_url = <string>
 action.slackalert.param.username = <string>
@@ -26,8 +31,3 @@ action.slackalert.param.thumb_url = <string>
 action.slackalert.param.footer = <string>
 action.slackalert.param.footer_icon = <string>
 action.slackalert.param.ts = <string>
-
-action.slackalert.param.severity_default = <string>
-action.slackalert.param.severity_list = <string>
-
-action.slackalert.param.additional_fields = <string>
