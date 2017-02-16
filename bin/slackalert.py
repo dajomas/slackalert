@@ -1,4 +1,3 @@
-#!/opt/splunk/bin/python
 
 # Author: Johan Godfried (johan@goditt.com)
 # version 1.2.0
@@ -26,11 +25,13 @@ import csv
 import getopt
 import datetime
  
+from collections import OrderedDict
+
 # initialize the configuration dictionary
 conf = {}
 all_res_data = {}
 additional_fields = []
-alerttype = ""
+severity = ""
 channel_name = ""
 message = ""
 splunk_alert = ""
@@ -99,54 +100,55 @@ def send_message():
 
     # generate the payload
     slackpayload = {}
-    for field in ['username','icon_emoji','icon_url']:
-        fld_value = get_value(field)
-        if fld_value != None:
-            slackpayload[field] = fld_value
-
-    atdef = get_value("alerttype_defaut")
-    if atdef == None:
-        atdef = "#000000"
-    atcols = json.loads(get_value("alerttype_list"))
-
-    channel_name = get_value("channel")
-    # Check to see if the channel_name starts with an # (channel) or @ (person)
-    if channel_name != None:
-        if channel_name[0] != "#" and channel_name[0] != "@":
-            # If neither we default to a channel
-            channel_name = "#"+channel_name
-        slackpayload[field] = channel_name
-
     slackpayload['attachments'] = []
     for res_data in all_res_data:
         debug_print("res_data", res_data)
-        # based on the alerttype, set the bar color
+
+        for field in ['username','icon_emoji','icon_url']:
+            fld_value = get_value(field, res_data)
+            if fld_value != None:
+                slackpayload[field] = fld_value
+    
+        atdef = get_value("severity_default", res_data)
+        if atdef == None:
+            atdef = "#000000"
+        atcols = json.loads(get_value("severity_list", res_data))
+    
+        channel_name = get_value("channel", res_data)
+        # Check to see if the channel_name starts with an # (channel) or @ (person)
+        if channel_name != None:
+            if channel_name[0] != "#" and channel_name[0] != "@":
+                # If neither we default to a channel
+                channel_name = "#"+channel_name
+            slackpayload["channel"] = channel_name
+
+        # based on the severity, set the bar color
         atcol = None
-        alerttype = get_value("alerttype", res_data)
+        severity = get_value("severity", res_data)
         alertmsg = get_value("message", res_data)
-        if alerttype == None or alertmsg  == None:
-            print("One of the mandatory fields (alerttype or message) is not found in the search results")
+        if severity == None or alertmsg  == None:
+            print("One of the mandatory fields (severity or message) is not found in the search results")
             sys.exit(1)
 
-        # collect alerttypes and colors
+        # collect severitys and colors
         if atcols != None:
-            for conf_alerttype in atcols:
-                if conf_alerttype.lower() == alerttype.lower():
+            for conf_severity in atcols:
+                if conf_severity.lower() == severity.lower():
                     # collect the color for the current allerttype
-                    atcol = atcols[conf_alerttype]
+                    atcol = atcols[conf_severity]
     
-        # if no color for the current alerttype has been found, use the default color
+        # if no color for the current severity has been found, use the default color
         if atcol == None:
             atcol = atdef
     
         # Add fields for payload
         allfields = []
         allfields.append( { 'title': 'ALERT', 'value': '', 'short': 'true' } )
-        allfields.append( { 'title': '', 'value': alerttype, 'short': 'true' } )
+        allfields.append( { 'title': '', 'value': severity, 'short': 'true' } )
         allfields.append( { 'title': 'MESSAGE', 'value': '', 'short': 'false' } )
         allfields.append( { 'title': '', 'value': alertmsg, 'short': 'false' } )
         try:
-            conf_additional_fields = json.loads(conf["default"]["additional_fields"])
+            conf_additional_fields = json.loads(conf["default"]["additional_fields"], object_pairs_hook=OrderedDict)
             for fld in conf_additional_fields:
                 # generate the additional alert fields
                 allfields.append( { 'title': fld, 'value': '', 'short': 'true' } )
@@ -160,8 +162,8 @@ def send_message():
             'fields': allfields
         }
 
-        for field in ['title','fallback','channel','pretext','text','author_name','author_link','author_icon','title_link','image_url','thumb_url','footer','footer_icon','ts']:
-            field_val = get_value(field)
+        for field in ['title','fallback','pretext','text','author_name','author_link','author_icon','title_link','image_url','thumb_url','footer','footer_icon','ts']:
+            field_val = get_value(field, res_data)
             if field_val != None and field_val != "":
                 payloadatt[field] = field_val
     
@@ -169,15 +171,15 @@ def send_message():
         slackpayload['attachments'].append(payloadatt)
     
     # Send the payload to the slack incoming webhook
-    slackurl = get_value("url")
-    slacktoken = get_value("hooktoken")
+    slackurl = get_value("url", res_data)
+    slacktoken = get_value("hooktoken", res_data)
 
     debug_print("slackpayload", slackpayload)
     debug_print("slackurl", slackurl)
     debug_print("slacktoken", slacktoken)
             
     if slackurl != None and slacktoken != None:
-        proxy = get_value("proxy")
+        proxy = get_value("proxy", res_data)
         proxies = {}
         if proxy != None and proxy != "":
             proxies = {'http': proxy, 'https': proxy,}
