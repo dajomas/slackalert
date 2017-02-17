@@ -5,7 +5,6 @@
 
     <block title="Slack connection settings" endpoint="admin/alert_actions" entity="slackalert">
         <input field="param.proxy">
-
             <label>Proxy string</label>
             <type>text</type>
         </input>
@@ -15,8 +14,8 @@
           proxy_user and proxy_pass default to empty<BR>
           proxy_port defaults to the default port for the protocol (80 for http and 443 for https)
         ]]></text>
-        <input field="param.url">
 
+        <input field="param.url">
             <label>Webhook URL</label>
             <type>text</type>
         </input>
@@ -24,8 +23,8 @@
           In order to obtain the Webhook URL you have to create a new incoming webhook integration for you Slack instance.
           See <a href="https://api.slack.com/incoming-webhooks">Incoming Webhooks Docs</a> for details.
         ]]></text>
-        <input field="param.hooktoken">
 
+        <input field="param.hooktoken">
             <label>Webhook token</label>
             <type>text</type>
         </input>
@@ -36,23 +35,22 @@
 
     <block title="Mandatory settings" endpoint="admin/alert_actions" entity="slackalert">
         <input field="param.severity">
-
             <label>Severity Field</label>
             <type>text</type>
         </input>
         <text><![CDATA[
           Enter the default fieldname from the search results that contains the alert type. Defaults to field name severity.
         ]]></text>
-        <input field="param.message_fld">
 
+        <input field="param.message_fld">
             <label>Message Field</label>
             <type>text</type>
         </input>
         <text><![CDATA[
           Enter the default fieldname from the search results that contains the message. Defaults to field name message.
         ]]></text>
-        <input field="param.message">
 
+        <input field="param.message">
             <label>Message</label>
             <type>text</type>
         </input>
@@ -62,32 +60,32 @@
     </block>
 
     <block title="Optional settings" endpoint="admin/alert_actions" entity="slackalert">
-        <input field="param.severity_default">
+        <input field="param.channel">
+            <label>Default Channel</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+           Can start with # (channel) or @ (person). Prefix defaults to # if omitted.
+           Channel defaults to the channel configured for the webhook you use.
+           If the channel starts with an @, the user will receive the message in the Slackbot channel.
+        ]]></text>
+    </block>
 
+    <block title="Alert color settings" endpoint="admin/alert_actions" entity="slackalert">
+        <input field="param.severity_default">
             <label>Default message color</label>
             <type>text</type>
         </input>
         <text><![CDATA[
           The default alert color (HTML color name, rgb(r,g,b) format or HEX format)
         ]]></text>
-    </block>
 
-    <block title="Alert color settings" endpoint="admin/alert_actions" entity="slackalert">
         <input field="param.severity_list">
-
             <label>Severity colors</label>
             <type>text</type>
         </input>
         <text><![CDATA[
           JSON notation for color per severity (HTML color name, rgb(r,g,b) format or HEX fwrmat) For example: { "CRIT": "#FF0000", "WARN": "orange" }
-        ]]></text>
-        <input field="param.message_fld">
-
-            <label>Message Field</label>
-            <type>text</type>
-        </input>
-        <text><![CDATA[
-          Enter the default fieldname from the search results that contains the message. Defaults to field name message.
         ]]></text>
     </block>
 
