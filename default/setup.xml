@@ -90,5 +90,77 @@
     </block>
 
     <block title="Additional fields" endpoint="admin/alert_actions" entity="slackalert">
+        <text><![CDATA[
+ 		The fields below are used to create the message send to Slack.<BR><BR>
+                Enter the values for these Slack message fields. Either use direct value,
+		a splunk token (i.e. $result.fieldname$) or a field macro (i.e. {fieldname})<BR><BR>
+                For an explanation of these fields, have a look at the
+		<a target=_blank href="https://api.slack.com/docs/message-attachments">Slack API message attachments</a>.
+        ]]></text>
+
+        <input field="param.author_icon">
+            <label>author_icon</label>
+            <type>text</type>
+        </input>
+        <input field="param.author_name">
+            <label>author_name</label>
+            <type>text</type>
+        </input>
+        <input field="param.author_link">
+            <label>author_link</label>
+            <type>text</type>
+        </input>
+        <input field="param.fallback">
+            <label>fallback</label>
+            <type>text</type>
+        </input>
+        <input field="param.footer">
+            <label>footer</label>
+            <type>text</type>
+        </input>
+        <input field="param.footer_icon">
+            <label>footer_icon</label>
+            <type>text</type>
+        </input>
+        <input field="param.icon_emoji">
+            <label>icon_emoji</label>
+            <type>text</type>
+        </input>
+        <input field="param.icon_url">
+            <label>icon_url</label>
+            <type>text</type>
+        </input>
+        <input field="param.image_url">
+            <label>image_url</label>
+            <type>text</type>
+        </input>
+        <input field="param.pretext">
+            <label>pretext</label>
+            <type>text</type>
+        </input>
+        <input field="param.text">
+            <label>text</label>
+            <type>text</type>
+        </input>
+        <input field="param.thumb_url">
+            <label>thumb_url</label>
+            <type>text</type>
+        </input>
+        <input field="param.title">
+            <label>title</label>
+            <type>text</type>
+        </input>
+        <input field="param.title_link">
+            <label>title_link</label>
+            <type>text</type>
+        </input>
+        <input field="param.ts">
+            <label>ts</label>
+            <type>text</type>
+        </input>
+        <input field="param.username">
+            <label>username</label>
+            <type>text</type>
+        </input>
     </block>
 </setup>
