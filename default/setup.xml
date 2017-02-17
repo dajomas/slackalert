@@ -55,7 +55,7 @@
             <type>text</type>
         </input>
         <text><![CDATA[
-          Enter the default message. If both Message Field and Message are entered, the Message Field is used. If the Message Fiedl does not exist in the search, the Message is used.
+          Enter the default message. If both Message Field and Message are entered, the Message Field is used. If the Message Field does not exist in the search, the Message is used.
         ]]></text>
     </block>
 
