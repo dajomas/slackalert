@@ -9,17 +9,12 @@ If the Trigger setting is set to Once, all result events are combined into a sin
 
 When using the Trigger setting Once, consider using macro's. This means that in stead of $result.fieldname$ you use {fieldname}. Splunk will substitute $result.fieldname$ with only one of the results from the search. When using {fieldname} the script will replace fieldname with the value from each of the results.
 
-When you install the add-on, you can run the setup to configure the Slack URL to connect to the webhook, the hook token and a proxy
+When you install the add-on, you can run the setup to configure default values for new alerts.
 
-When you configure an alert, the add-on requires the search result to contain at least the following information:
- * an alert type
- * a messages
- 
-The fields that contain this information can be configured in the alert configuration
-
-The third section in the alert configuration contains information that can be used to construct the Slack message.
-(for more information on these fields have a look at https://api.slack.com/docs/message-attachments)
-
-In the fourth section the message bar colors are defined based on the alert type
-
-The final section defines additional fields to display in the message based on fields in the search results.
+Both setup and alert configuration consist of the following sections:
+ * Slack connect settings. Here you configure the URL, hook token and proxy settings
+ * Mandatory settings. The add-on requires the search result to contain at least a severity field. The fieldname can be configured in the alert and defaults to "severity". Here you can also set either the message field or the message itself
+ * Optional settings. To override the channel for the configured webhook
+ * Severity color settings. Set the colorbar of the Slack message according to the severity value
+ * Additional fields. Any field that is returned by the search can be added to the Slack message
+ * Message format settings. The last section in the setup and alert configuration contains information that can be used to construct the Slack message. (for more information on these fields have a look at https://api.slack.com/docs/message-attachments)
