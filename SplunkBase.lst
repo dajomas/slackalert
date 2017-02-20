@@ -1,0 +1,12 @@
+./appserver/static/slackalert.png
+./appserver/static/appIcon.png
+./appserver/static/appIcon_2.png
+./bin/slackalert.py
+./default/alert_actions.conf
+./default/app.conf
+./default/data/ui/alerts/slackalert.html
+./default/setup.xml
+./metadata/default.meta
+./README/alert_actions.conf.spec
+./README/savedsearches.conf.spec
+./README.md

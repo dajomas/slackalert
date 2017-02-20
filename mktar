@@ -1,0 +1,7 @@
+VERSION=$(grep version default/app.conf | cut -d\  -f3 | sed "s#[^0-9\.\-]##g")
+echo "Creating SplunkBase tar file for version ${VERSION}..."
+TARFILE=slackalert.${VERSION}.tgz
+tar zcvf ${TARFILE} -T SplunkBase.lst
+
+echo "Done..."
+ls -l ${TARFILE}
