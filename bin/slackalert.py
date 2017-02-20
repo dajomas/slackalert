@@ -1,5 +1,15 @@
 
 # Author: Johan Godfried (johan@goditt.com)
+# version 1.2.2
+# * Re-arranged fields
+# * renamed alerttype to severity
+# * made comments clearer
+# * add opportunity to enter message directly
+# * fix bug in channel
+# * leave additional fields in the order in which they are entered
+# version 1.2.1
+# * Fix bug in macro expansion
+# + Added support for Trigger setting Once
 # version 1.2.0
 # Changelog
 # + Add support for Trigger setting Once
