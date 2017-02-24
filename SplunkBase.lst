@@ -1,6 +1,7 @@
 ./appserver/static/slackalert.png
 ./appserver/static/appIcon.png
 ./appserver/static/appIcon_2.png
+./appserver/static/screenshot.png
 ./bin/slackalert.py
 ./default/alert_actions.conf
 ./default/app.conf

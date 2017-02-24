@@ -1,7 +1,20 @@
 VERSION=$(grep version default/app.conf | cut -d\  -f3 | sed "s#[^0-9\.\-]##g")
 echo "Creating SplunkBase tar file for version ${VERSION}..."
 TARFILE=slackalert.${VERSION}.tgz
-tar zcvf ${TARFILE} -T SplunkBase.lst
+
+echo "Staging files..."
+cat SplunkBase.lst | while read FILE
+do
+	DESTDIR=slackalert/$(dirname "${FILE}")
+	[[ ! -d "${DESTDIR}" ]] && mkdir -p "${DESTDIR}"
+	cp "${FILE}" "${DESTDIR}"
+done
+
+echo "Creating tar file..."
+tar zcvf ${TARFILE} slackalert
+
+echo "Cleaning up staging area"
+rm -rf slackalert
 
 echo "Done..."
 ls -l ${TARFILE}
