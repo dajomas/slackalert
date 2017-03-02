@@ -24,6 +24,8 @@
 # ChangeLog
 # + Add cli argument handling
 
+from collections import OrderedDict
+
 import os
 import sys
 import time
@@ -36,7 +38,6 @@ import csv
 import getopt
 import datetime
  
-from collections import OrderedDict
 from __future__ import print_function
 
 # initialize the configuration dictionary
@@ -58,18 +59,19 @@ def eprint(*args, **kwargs):
 
 def debug_print(debug_msg, txt_to_print, isJson=1):
     if do_debug == 1:
-        print "***********************"
-        print datetime.datetime.now().strftime("* %Y-%m-%d %H:%M:%S *")
-        print "***********************"
-        print debug_msg
-        print "***********************"
+        print("***********************")
+        print(datetime.datetime.now().strftime("* %Y-%m-%d %H:%M:%S *"))
+        print("***********************")
+        print(debug_msg)
+        print("***********************")
         if do_pretty == 1 and isJson == 1:
             try:
-                print json.dumps(txt_to_print, indent=4, sort_keys=True)
+                print(json.dumps(txt_to_print, indent=4, sort_keys=True))
             except:
-                print txt_to_print
+                print(txt_to_print)
         else:
-            print txt_to_print
+            print(txt_to_print)
+
 
 def replace_macro(txtstring, res_data):
     for key in res_data.keys():
