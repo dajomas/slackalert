@@ -1,5 +1,7 @@
-
 # Author: Johan Godfried (johan@goditt.com)
+# version 1.2.4
+# + output to stderr
+# * fix debug_print to allow for non JSON when pretty print is selected
 # version 1.2.2
 # * Re-arranged fields
 # * renamed alerttype to severity
@@ -9,8 +11,7 @@
 # * leave additional fields in the order in which they are entered
 # version 1.2.1
 # * Fix bug in macro expansion
-# + Added support for Trigger setting Once
-# version 1.2.0
+# + Added support for Trigger setting Once# version 1.2.0
 # Changelog
 # + Add support for Trigger setting Once
 # version 0.3
@@ -36,6 +37,7 @@ import getopt
 import datetime
  
 from collections import OrderedDict
+from __future__ import print_function
 
 # initialize the configuration dictionary
 conf = {}
@@ -51,14 +53,17 @@ do_debug = 0
 do_pretty = 0
 no_send = 0
 
-def debug_print(debug_msg, txt_to_print):
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
+def debug_print(debug_msg, txt_to_print, isJson=1):
     if do_debug == 1:
         print "***********************"
         print datetime.datetime.now().strftime("* %Y-%m-%d %H:%M:%S *")
         print "***********************"
         print debug_msg
         print "***********************"
-        if do_pretty == 1:
+        if do_pretty == 1 and isJson == 1:
             try:
                 print json.dumps(txt_to_print, indent=4, sort_keys=True)
             except:
@@ -136,8 +141,10 @@ def send_message():
         atcol = None
         severity = get_value("severity", res_data)
         alertmsg = get_value("message", res_data)
+        # if severity == None:
         if severity == None or alertmsg  == None:
-            print("One of the mandatory fields (severity or message) is not found in the search results")
+            debug_print("output", "One of the mandatory fields (severity or message) is not found in the search results or configuration", 0)
+            eprint("One of the mandatory fields (severity or message) is not found in the search results or configuration")
             sys.exit(1)
 
         # collect severitys and colors
@@ -204,7 +211,8 @@ def send_message():
         
     # Print the result text
     if no_send != 1:
-        print(req_res.text)
+        debug_print("output", "Slackalert result: "+req_res.text, 0)
+        eprint("Slackalert result: "+req_res.text)
 
 def read_res_file(fname):
     read_res_data = []
@@ -221,7 +229,8 @@ if __name__ == '__main__':
     try:
         opts, args = getopt.getopt(sys.argv[1:],"edpn",["execute","debug","pretty","nosend"])
     except getopt.GetoptError:
-        print "slackalert.py [-e|--execute] [-d|--debug] [-p|--pretty] [-n|--nosend]"
+        debug_print("output", "slackalert.py [-e|--execute] [-d|--debug] [-p|--pretty] [-n|--nosend]", 0)
+        eprint("slackalert.py [-e|--execute] [-d|--debug] [-p|--pretty] [-n|--nosend]")
         sys.exit(2)
 
     for opt, arg in opts:
