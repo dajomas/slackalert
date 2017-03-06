@@ -1,4 +1,6 @@
 # Author: Johan Godfried (johan@goditt.com)
+# version 1.2.6
+# * Fix import bug for print_function (should be at the top of the script)
 # version 1.2.4
 # + output to stderr
 # * fix debug_print to allow for non JSON when pretty print is selected
@@ -24,6 +26,7 @@
 # ChangeLog
 # + Add cli argument handling
 
+from __future__ import print_function
 from collections import OrderedDict
 
 import os
@@ -37,8 +40,6 @@ import gzip
 import csv
 import getopt
 import datetime
- 
-from __future__ import print_function
 
 # initialize the configuration dictionary
 conf = {}
