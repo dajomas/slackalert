@@ -1,4 +1,6 @@
 # Author: Johan Godfried (johan@goditt.com)
+# version 1.2.8
+# * Add error checking for severity_list collection (in case no list is provided)
 # version 1.2.6
 # * Fix import bug for print_function (should be at the top of the script)
 # version 1.2.4
@@ -130,7 +132,10 @@ def send_message():
         atdef = get_value("severity_default", res_data)
         if atdef == None:
             atdef = "#000000"
-        atcols = json.loads(get_value("severity_list", res_data))
+        try:
+            atcols = json.loads(get_value("severity_list", res_data))
+        except:
+            atcols = None
     
         channel_name = get_value("channel", res_data)
         # Check to see if the channel_name starts with an # (channel) or @ (person)
