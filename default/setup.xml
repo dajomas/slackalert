@@ -34,7 +34,7 @@
     </block>
 
     <block title="Mandatory settings" endpoint="admin/alert_actions" entity="slackalert">
-        <input field="param.severity">
+        <input field="param.severity_fld">
             <label>Severity Field</label>
             <type>text</type>
         </input>
