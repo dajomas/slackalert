@@ -1,6 +1,7 @@
 # Author: Johan Godfried (johan@goditt.com)
 # version 1.2.8
 # * Add error checking for severity_list collection (in case no list is provided)
+# * If no fallback is defined, default to the provided message
 # version 1.2.6
 # * Fix import bug for print_function (should be at the top of the script)
 # version 1.2.4
@@ -189,9 +190,13 @@ def send_message():
 
         for field in ['title','fallback','pretext','text','author_name','author_link','author_icon','title_link','image_url','thumb_url','footer','footer_icon','ts']:
             field_val = get_value(field, res_data)
+            # If no fallback is defined, default to the provided message
+            if field == "fallback":
+                if field_val == None or field_val == "":
+                    field_val = alertmsg
             if field_val != None and field_val != "":
                 payloadatt[field] = field_val
-    
+
         debug_print("payloadatt", payloadatt)
         slackpayload['attachments'].append(payloadatt)
     
