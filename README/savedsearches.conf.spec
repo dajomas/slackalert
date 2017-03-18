@@ -13,6 +13,8 @@ action.slackalert.param.channel = <string>
 action.slackalert.param.severity_default = <string>
 action.slackalert.param.severity_list = <string>
 
+action.slackalert.param.additional_all_fields = <string>
+action.slackalert.param.additional_some_fields = <string>
 action.slackalert.param.additional_fields = <string>
 
 action.slackalert.param.icon_emoji = <string>

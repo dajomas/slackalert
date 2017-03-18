@@ -111,6 +111,27 @@
 
     <div class="control-group">
         <hr><H3>Additional fields</H3><hr>
+        
+        <label class="control-label" for="slackalert_additional_fields">All Fields</label>
+        <div class="controls">
+            <input type="checkbox" name="action.slackalert.param.additional_all_fields" id="slackalert_additional_all_fields">
+        </div>
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                If checked, all fields from the search result are added to the message and the next 2 settings will be ignored
+            </span>
+        </div>
+        
+        <label class="control-label" for="slackalert_additional_fields">Some Fields</label>
+        <div class="controls">
+            <input type="text" name="action.slackalert.param.additional_some_fields" id="slackalert_additional_some_fields">
+        </div>
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                Enter the fields you want to include, separated by comma's. If this field is not empty, the next setting will be ignored
+            </span>
+        </div>
+        
         <label class="control-label" for="slackalert_additional_fields">Fields</label>
         <div class="controls">
             <textarea rows=5 name="action.slackalert.param.additional_fields" id="slackalert_additional_fields"></textarea>

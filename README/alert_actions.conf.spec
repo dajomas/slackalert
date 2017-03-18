@@ -12,8 +12,6 @@ param.channel = <string>
 param.severity_default = <string>
 param.severity_list = <string>
 
-param.additional_fields = <string>
-
 param.icon_emoji = <string>
 param.icon_url = <string>
 param.username = <string>
