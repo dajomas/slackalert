@@ -10,7 +10,7 @@
 
         <label class="control-label" for="slackalert_url">URL</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.url" id="slackalert_url" />
+            <splunk-text-input name="action.slackalert.param.url" id="slackalert_url"></splunk-text-input>
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
@@ -22,13 +22,13 @@
 
         <label class="control-label" for="slackalert_hooktoken">Hooktoken</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.hooktoken" id="slackalert_hooktoken" />
+            <splunk-text-input name="action.slackalert.param.hooktoken" id="slackalert_hooktoken"></splunk-text-input>
             <span class="help-block">Hook token for your community</span>
         </div>
 
         <label class="control-label" for="slackalert_proxy">Proxy</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.proxy" id="slackalert_proxy" />
+            <splunk-text-input name="action.slackalert.param.proxy" id="slackalert_proxy"></splunk-text-input>
             <span class="help-block">http[s]://[user[:pass]@]proxy[:port]</span>
         </div>
     </div>
@@ -37,7 +37,7 @@
         <hr><H3>Mandatory settings</H3><hr>
         <label class="control-label" for="slackalert_severity_fld">Severity Field</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.severity_fld" id="slackalert_severity_fld" />*
+            <splunk-text-input name="action.slackalert.param.severity_fld" id="slackalert_severity_fld"></splunk-text-input>*
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
@@ -48,7 +48,7 @@
 
         <label class="control-label" for="slackalert_message_fld">Message Field</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.message_fld" id="slack_message_fld"/>
+            <splunk-text-input name="action.slackalert.param.message_fld" id="slack_message_fld"></splunk-text-input>
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
@@ -58,7 +58,7 @@
 
         <label class="control-label" for="slackalert_message">Message</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.message" id="slack_message"/>
+            <splunk-text-input name="action.slackalert.param.message" id="slack_message"></splunk-text-input>
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
@@ -75,7 +75,7 @@
         <hr><H3>Optional settings</H3><hr>
         <label class="control-label" for="slackalert_channel">channel</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.channel" id="slackalert_channel" />
+            <splunk-text-input name="action.slackalert.param.channel" id="slackalert_channel" ></splunk-text-input>
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
@@ -91,7 +91,7 @@
         <hr><H3>Severity color settings</H3><hr>
         <label class="control-label" for="slackalert_severity_default">default</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.severity_default" id="slackalert_severity_default" />
+            <splunk-text-input name="action.slackalert.param.severity_default" id="slackalert_severity_default" ></splunk-text-input>
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
@@ -100,7 +100,7 @@
         </div>
         <label class="control-label" for="slackalert_severity_list">severity colors</label>
         <div class="controls">
-            <textarea rows=5 name="action.slackalert.param.severity_list" id="slackalert_severity_list"></textarea>
+            <splunk-text-area rows=5 name="action.slackalert.param.severity_list" id="slackalert_severity_list"></splunk-text-area>
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
@@ -114,17 +114,20 @@
         
         <label class="control-label" for="slackalert_additional_fields">All Fields</label>
         <div class="controls">
-            <input type="checkbox" name="action.slackalert.param.additional_all_fields" id="slackalert_additional_all_fields">
+            <splunk-radio-input name="action.slackalert.param.additional_all_fields" id="slackalert_additional_all_fields">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </splunk-radio-input>
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
-                If checked, all fields from the search result are added to the message and the next 2 settings will be ignored
+                If Yes, all fields from the search result are added to the message and the next 2 settings will be ignored
             </span>
         </div>
         
         <label class="control-label" for="slackalert_additional_fields">Some Fields</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.additional_some_fields" id="slackalert_additional_some_fields">
+            <splunk-text-input name="action.slackalert.param.additional_some_fields" id="slackalert_additional_some_fields"></splunk-text-input>
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
@@ -134,7 +137,7 @@
         
         <label class="control-label" for="slackalert_additional_fields">Fields</label>
         <div class="controls">
-            <textarea rows=5 name="action.slackalert.param.additional_fields" id="slackalert_additional_fields"></textarea>
+            <splunk-text-area rows=5 name="action.slackalert.param.additional_fields" id="slackalert_additional_fields"></splunk-text-area>
         </div>
         <div class="controls">
             <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
@@ -162,21 +165,21 @@
 
         <label class="control-label" for="slackalert_author_icon">author_icon</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.author_icon" id="slackalert_author_icon" />
+            <splunk-text-input name="action.slackalert.param.author_icon" id="slackalert_author_icon" ></splunk-text-input>
         </div>
         <label class="control-label" for="slackalert_author_link">author_link</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.author_link" id="slackalert_author_link" />
+            <splunk-text-input name="action.slackalert.param.author_link" id="slackalert_author_link" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_author_name">author_name</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.author_name" id="slackalert_author_name" />
+            <splunk-text-input name="action.slackalert.param.author_name" id="slackalert_author_name" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_fallback">fallback</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.fallback" id="slackalert_fallback" />
+            <splunk-text-input name="action.slackalert.param.fallback" id="slackalert_fallback" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <div class="controls">
@@ -186,62 +189,62 @@
         </div>
         <label class="control-label" for="slackalert_footer">footer</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.footer" id="slackalert_footer" />
+            <splunk-text-input name="action.slackalert.param.footer" id="slackalert_footer" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_footer_icon">footer_icon</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.footer_icon" id="slackalert_footer_icon" />
+            <splunk-text-input name="action.slackalert.param.footer_icon" id="slackalert_footer_icon" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_icon_emoji">icon_emoji</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.icon_emoji" id="slackalert_icon_emoji" />
+            <splunk-text-input name="action.slackalert.param.icon_emoji" id="slackalert_icon_emoji" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_icon_url">icon_url</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.icon_url" id="slackalert_icon_url" />
+            <splunk-text-input name="action.slackalert.param.icon_url" id="slackalert_icon_url" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_image_url">image_url</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.image_url" id="slackalert_image_url" />
+            <splunk-text-input name="action.slackalert.param.image_url" id="slackalert_image_url" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_pretext">pretext</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.pretext" id="slackalert_pretext" />
+            <splunk-text-input name="action.slackalert.param.pretext" id="slackalert_pretext" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_text">text</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.text" id="slackalert_text" />
+            <splunk-text-input name="action.slackalert.param.text" id="slackalert_text" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_thumb_url">thumb_url</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.thumb_url" id="slackalert_thumb_url" />
+            <splunk-text-input name="action.slackalert.param.thumb_url" id="slackalert_thumb_url" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_title">title</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.title" id="slackalert_title" />
+            <splunk-text-input name="action.slackalert.param.title" id="slackalert_title" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_title_link">title_link</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.title_link" id="slackalert_title_link" />
+            <splunk-text-input name="action.slackalert.param.title_link" id="slackalert_title_link" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_ts">ts</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.ts" id="slackalert_ts" />
+            <splunk-text-input name="action.slackalert.param.ts" id="slackalert_ts" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
         <label class="control-label" for="slackalert_username">username</label>
         <div class="controls">
-            <input type="text" name="action.slackalert.param.username" id="slackalert_username" />
+            <splunk-text-input name="action.slackalert.param.username" id="slackalert_username" ></splunk-text-input>
             <span class="help-block"></span>
         </div>
     </div>
