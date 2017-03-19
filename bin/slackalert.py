@@ -173,15 +173,33 @@ def send_message():
         allfields.append( { 'title': '', 'value': severity, 'short': 'true' } )
         allfields.append( { 'title': 'MESSAGE', 'value': '', 'short': 'false' } )
         allfields.append( { 'title': '', 'value': alertmsg, 'short': 'false' } )
-        try:
-            conf_additional_fields = json.loads(conf["default"]["additional_fields"], object_pairs_hook=OrderedDict)
-            for fld in conf_additional_fields:
-                # generate the additional alert fields
-                allfields.append( { 'title': fld, 'value': '', 'short': 'true' } )
-                allfields.append( { 'title': '', 'value': replace_macro(conf_additional_fields[fld], res_data), 'short': 'true' } )
-        except KeyError as e:
-            # no additional alert fields found
-            pass
+        # Check if all fields from the search result need to be added to the message. They will be added with as fieldname/value pair
+        # Or some fields. They will be added with as fieldname/value pair
+        # Or fields defined through a JSON structure where the fieldname and values are defined
+        do_all_fields = get_value("additional_all_fields")
+        do_some_fields = get_value("additional_some_fields")
+        if do_all_fields == "Yes" or do_all_fields == "1":
+            for fld in res_data.keys():
+                if fld[:2] != "__":
+                    allfields.append( { 'title': fld, 'value': '', 'short': 'true' } )
+                    allfields.append( { 'title': '', 'value': replace_macro(res_data[fld], res_data), 'short': 'true' } )
+        elif do_some_fields != "" and do_some_fields != None:
+            for fld in do_some_fields.split(","):
+                try:
+                    allfields.append( { 'title': fld, 'value': '', 'short': 'true' } )
+                    allfields.append( { 'title': '', 'value': replace_macro(res_data[fld], res_data), 'short': 'true' } )
+                except KeyError as e:
+                    pass
+        else:
+            try:
+                conf_additional_fields = json.loads(conf["default"]["additional_fields"], object_pairs_hook=OrderedDict)
+                for fld in conf_additional_fields:
+                    # generate the additional alert fields
+                    allfields.append( { 'title': fld, 'value': '', 'short': 'true' } )
+                    allfields.append( { 'title': '', 'value': replace_macro(conf_additional_fields[fld], res_data), 'short': 'true' } )
+            except KeyError as e:
+                # no additional alert fields found
+                pass
     
         payloadatt = {
             'color': atcol,
